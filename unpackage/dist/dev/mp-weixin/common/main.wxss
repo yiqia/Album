@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+.Limit{
+	width: 95%;
+	height: 100%;
+	margin: 0 auto;
+}
+

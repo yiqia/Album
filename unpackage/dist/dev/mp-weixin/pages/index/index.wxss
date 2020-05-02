@@ -1,0 +1,74 @@
+
+page{
+	background-color:#f5f5f5;
+}
+.swiper {
+	width: 100%;
+	height: 30vh;
+}
+.swiper ._img {
+	width: 100%;
+	height: 100%;
+}
+.albumList {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	margin-top: 0.5rem;
+}
+.content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.albumListLi {
+	width: 48%;
+	background-color: #fff;
+	box-shadow: 1px 2px 3px #f2f6f8;
+	height: 14rem;
+	margin-bottom: 0.5rem;
+}
+.albumListLi ._img{
+	width: 100%;
+	height: 65%;
+}
+.albumListLi:nth-child(2n-1) {
+	margin-right: 2%;
+}
+.alibumTitle{
+	color: #444;
+	height: 20%;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.alibumInfo{
+	color: #c1c1c1;
+	font-size: 0.8rem;
+	line-height: 1.5rem;
+}
+.text-area {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+
