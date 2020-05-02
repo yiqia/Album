@@ -17,4 +17,3 @@ app.all("*", function (req, res, next) {
 //加入前端需要访问的接口API名称↓↓↓↓
 app.use("/user", require("./api/user"));
 app.use("/album", require("./api/album"));
-// app.use("/area", require("./api/area"));

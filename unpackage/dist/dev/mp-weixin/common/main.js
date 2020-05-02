@@ -94,7 +94,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/*一奇开源QQ330729121*/var _default =
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
@@ -106,9 +107,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     console.log('App Hide');
   },
   globalData: {
-    url: 'http://192.168.1.12:10001/'
-    //url: 'https://album.q05.cc/'
-  } };exports.default = _default;
+    //url: 'http://192.168.1.12:10001/'
+    url: 'https://album.q05.cc/' } };exports.default = _default;
 
 /***/ }),
 /* 12 */

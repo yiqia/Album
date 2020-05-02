@@ -1,4 +1,5 @@
 //全局Express框架
+/*一奇开源QQ330729121*/
 const express = require("express");
 const router = express.Router();
 module.exports = router;

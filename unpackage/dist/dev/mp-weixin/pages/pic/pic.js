@@ -178,7 +178,8 @@ var Ajax = __webpack_require__(/*! ../util/Ajax.js */ 21);var _default =
   data: function data() {
     return {
       isSmall: false,
-      info: {} };
+      info: {},
+      isLogin: false };
 
   },
   methods: {
@@ -354,13 +355,14 @@ var Ajax = __webpack_require__(/*! ../util/Ajax.js */ 21);var _default =
     this.classId = e.id;
   },
   onShareAppMessage: function onShareAppMessage(res) {
+    var that = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
     }
     return {
-      title: this.info.title,
-      path: '/pages/pic/pic?id=' + this.info.Id };
+      title: that.info.title,
+      path: '/pages/pic/pic?id=' + that.classId };
 
 
   } };exports.default = _default;

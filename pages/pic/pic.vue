@@ -23,7 +23,7 @@
 					<img @longpress="showOther" @click="showImg" :src="item" alt="" mode="aspectFit" :style="isSmall?'width:25vw;height:25vw':'width: 100vw;height: 100vw;'"
 					 :data-index="index">
 				</view>
-				<view class="picListLi" @click="updataPic" style="background-color: #fff;box-shadow: 1px 2px 3px #a2a4a5;">
+				<view class="picListLi" @click="updataPic" style="background-color: #fff;box-shadow: 1px 2px 3px #a2a4a5;" v-if="isLogin">
 					<img src="/static/icon/add.png" alt="" :style="isSmall?'width:25vw;height:25vw':'width: 100vw;height: 100vw;'">
 				</view>
 			</view>
@@ -43,7 +43,8 @@
 		data() {
 			return {
 				isSmall: false,
-				info: {}
+				info: {},
+				isLogin:false
 			}
 		},
 		methods: {
@@ -219,13 +220,14 @@
 			this.classId = e.id;
 		},
 		onShareAppMessage(res) {
+			var that = this;
 			if (res.from === 'button') {
 				// 来自页面内转发按钮
 				console.log(res.target)
 			}
 			return {
-				title: this.info.title,
-				path: '/pages/pic/pic?id=' + this.info.Id
+				title: that.info.title,
+				path: '/pages/pic/pic?id=' + that.classId
 			}
 
 		}

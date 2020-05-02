@@ -1,4 +1,5 @@
 <script>
+	/*一奇开源QQ330729121*/
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -10,8 +11,8 @@
 			console.log('App Hide')
 		},
 		globalData: {
-			url: 'http://192.168.1.12:10001/'
-			//url: 'https://album.q05.cc/'
+			//url: 'http://192.168.1.12:10001/'
+			url: 'https://album.q05.cc/'
 		}
 	}
 </script>
