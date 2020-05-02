@@ -18,19 +18,14 @@
 
 			<view class="functionLi" @click="copy" :data-info="info.wx">
 				<view class="Limit">
-					<p>添加我的微信</p>
+					<p>我的微信</p>
 				</view>
 			</view>
-			<view class="functionLi" @click="callPhone">
+<!-- 			<view class="functionLi" @click="callPhone">
 				<view class="Limit">
-					<p>拨打我的电话</p>
+					<p></p>
 				</view>
-			</view>
-			<view class="functionLi" @click="copy" :data-info="info.www">
-				<view class="Limit">
-					<p>访问我的网址</p>
-				</view>
-			</view>
+			</view> -->
 			<button class="findMe" open-type="contact">
 				<view class="Limit">
 					<p>联系我们</p>
