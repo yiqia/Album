@@ -7611,9 +7611,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!**************************************!*\
-  !*** D:/源码/vue/vantAlbum/pages.json ***!
-  \**************************************/
+/*!**********************************!*\
+  !*** D:/源码/vue/album/pages.json ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8518,20 +8518,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 
 /***/ }),
 /* 7 */
-/*!*******************************************************!*\
-  !*** D:/源码/vue/vantAlbum/pages.json?{"type":"style"} ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** D:/源码/vue/album/pages.json?{"type":"style"} ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "navigationBarBackgroundColor": "#F5F5F5", "enablePullDownRefresh": true, "onReachBottomDistance": 50 }, "pages/list/list": { "navigationBarTitleText": "分类列表" }, "pages/my/login": { "navigationBarTitleText": "管理员登录" }, "pages/list/listContent": { "navigationBarTitleText": "列表相册" }, "pages/pic/pic": { "navigationBarTitleText": "图库" }, "pages/my/index": { "navigationBarTitleText": "我的" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "navigationBarBackgroundColor": "#F5F5F5", "enablePullDownRefresh": true, "onReachBottomDistance": 50, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/list/list": { "navigationBarTitleText": "分类列表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/my/login": { "navigationBarTitleText": "管理员登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/list/listContent": { "navigationBarTitleText": "列表相册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/pic/pic": { "navigationBarTitleText": "图库", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/my/index": { "navigationBarTitleText": "我的", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
-/*!******************************************************!*\
-  !*** D:/源码/vue/vantAlbum/pages.json?{"type":"stat"} ***!
-  \******************************************************/
+/*!**************************************************!*\
+  !*** D:/源码/vue/album/pages.json?{"type":"stat"} ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8671,9 +8671,9 @@ function normalizeComponent (
 /* 19 */,
 /* 20 */,
 /* 21 */
-/*!**********************************************!*\
-  !*** D:/源码/vue/vantAlbum/pages/util/Ajax.js ***!
-  \**********************************************/
+/*!******************************************!*\
+  !*** D:/源码/vue/album/pages/util/Ajax.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

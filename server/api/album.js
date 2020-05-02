@@ -28,7 +28,7 @@ router.all("/getAlbum", (req, res) => {
 	var end = parseInt(data.page) * 10,
 		start = (parseInt(data.page) - 1) * 10;
 	const sqlStr =
-		"select album_type.*,(select count(album_pic.Id) from album_pic where album_type.Id=album_pic.type_id) num from album_type limit ?,?";
+		"select album_type.*,(select count(album_pic.Id) from album_pic where album_type.Id=album_pic.type_id) num from album_type order by album_type.Id desc limit ?,? ";
 	sql.query(sqlStr, [start, end], function(error, results, fields) {
 		if (error) throw error;
 		res.end(JSON.stringify(results));
@@ -313,6 +313,56 @@ router.get("/cutType", (req, res) => {
 			const sqlStr =
 				"delete from album_type where Id = ?";
 			sql.query(sqlStr, [data.id], function(error, results,
+				fields) {
+				if (error) throw error;
+				res.end(JSON.stringify(yiqi.Code(1024)));
+			});
+		} else {
+			res.end(JSON.stringify(yiqi.Code(1003)));
+		}
+	});
+});
+//删除照片
+router.get("/cutImg", (req, res) => {
+	/*验证参数是否为空*/
+	const data = {
+		session: req.query.session,
+		id: req.query.id,
+		img:req.query.img,
+	}
+	if (yiqi.check(data)) {
+		res.end(JSON.stringify(yiqi.Code(1001)));
+	}
+	yiqi.isLogin(data.session, sql, function(e) {
+		if (e != "" && e != undefined && e.length > 0) {
+			const sqlStr =
+				"delete from album_pic where img = ? and type_id=?";
+			sql.query(sqlStr, [data.img,data.id], function(error, results,
+				fields) {
+				if (error) throw error;
+				res.end(JSON.stringify(yiqi.Code(1024)));
+			});
+		} else {
+			res.end(JSON.stringify(yiqi.Code(1003)));
+		}
+	});
+});
+//更新封面
+router.get("/setIndexPic", (req, res) => {
+	/*验证参数是否为空*/
+	const data = {
+		session: req.query.session,
+		id: req.query.id,
+		img:req.query.img,
+	}
+	if (yiqi.check(data)) {
+		res.end(JSON.stringify(yiqi.Code(1001)));
+	}
+	yiqi.isLogin(data.session, sql, function(e) {
+		if (e != "" && e != undefined && e.length > 0) {
+			const sqlStr =
+				"update album_type set img=? where Id=?";
+			sql.query(sqlStr, [data.img,data.id], function(error, results,
 				fields) {
 				if (error) throw error;
 				res.end(JSON.stringify(yiqi.Code(1024)));

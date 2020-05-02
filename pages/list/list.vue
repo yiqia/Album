@@ -61,7 +61,10 @@
 		methods:{
 			changeCut(e){
 				var that = this;
-				if(this.changeIndex!=""){
+				if(this.changeName!=""){
+					if(this.changeIndex==""){
+						this.changeIndex=0;
+					}
 					uni.showLoading({
 						title:"删除中",
 						mask:true

@@ -40,6 +40,19 @@
 		onLoad() {
 			this.getAlbum(this.page);
 		},
+		onShow(){
+			if(uni.getStorageSync("isF5Index")==true){
+				this.alibumList=[];
+				this.page=1;
+				this.getAlbum(this.page);
+				uni.setStorageSync("isF5Index",false);
+			}
+		},
+		onPullDownRefresh(){
+			this.alibumList=[];
+			this.page=1;
+			this.getAlbum(this.page);
+		},
 		methods: {
 			showPic(e){
 				var id=e.currentTarget.dataset.id;

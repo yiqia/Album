@@ -75,10 +75,20 @@
 			this.getAlbum(e.id);
 			this.classId=e.id;
 		},
+		onShow(){
+			if(uni.getStorageSync("isF5List")==true){
+				this.alibumList=[];
+				this.getAlbum(this.classId);
+				uni.setStorageSync("isF5List",false);
+			}
+		},
 		methods:{
 			changeCut(e){
 				var that = this;
-				if(this.changeIndex!=""){
+				if(this.albumInfo!="" || this.changeName!=""){
+					if(this.changeIndex==""){
+						this.changeIndex=0;
+					}
 					uni.showLoading({
 						title:"删除中",
 						mask:true
@@ -220,10 +230,10 @@
 				var id=this.alibumList[index].Id,
 					title=this.alibumList[index].title,
 					info=this.alibumList[index].info;
+				console.log(index);
 				this.changeName=title;
 				this.changeIndex=index;
 				this.albumInfo=info;
-				this.$forceUpdate();
 				uni.showToast({
 					title:"选择成功，顶部开始管理",
 					icon:"none"

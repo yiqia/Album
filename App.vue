@@ -10,8 +10,8 @@
 			console.log('App Hide')
 		},
 		globalData: {
-			//url: 'http://192.168.1.12:10001/'
-			url: 'https://album.q05.cc/'
+			url: 'http://192.168.1.12:10001/'
+			//url: 'https://album.q05.cc/'
 		}
 	}
 </script>
