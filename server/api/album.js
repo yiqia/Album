@@ -476,3 +476,32 @@ router.post("/updataPicQiniu", (req, res) => {
 		})
 	});
 });
+//获取banner图
+router.get("/getBanner", (req, res) => {
+	/*验证参数是否为空*/
+	const sqlStr =
+		"select * from album_banner";
+	sql.query(sqlStr, function(error, results,
+		fields) {
+		if (error) throw error;
+		var imgList=[];
+		results.forEach((item,index)=>{
+			imgList.push(item.img);
+		})
+		res.end(JSON.stringify(imgList));
+	});
+	
+});
+//获取设置
+router.get("/getSet", (req, res) => {
+	/*验证参数是否为空*/
+	const sqlStr =
+		"select * from album_set where Id =1";
+	sql.query(sqlStr, function(error, results,
+		fields) {
+		if (error) throw error;
+		
+		res.end(JSON.stringify(results[0]));
+	});
+	
+});

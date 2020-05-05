@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
 		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-			<swiper-item>
-				<img src="xc.cuchachayou.com/static/1_466443.jpg" alt="">
+			<swiper-item v-for="item in banner" :key="item">
+				<img :src="item" alt="">
 			</swiper-item>
 		</swiper>
 		<view class="Limit">
@@ -32,6 +32,7 @@
 				old: {
 					scrollTop: 0
 				},
+				banner:[],
 				alibumList:[
 				],
 				page:1
@@ -39,6 +40,14 @@
 		},
 		onLoad() {
 			this.getAlbum(this.page);
+			var that = this;
+			Ajax.get({url:'album/getBanner',data:{
+			}})
+			  .then((res)=>{//请求成功的回调函数
+				that.banner=res.data;
+			  }).catch((res)=>{//捕获请求失败时的回调函数
+			    console.log(res)
+			  })
 		},
 		onShow(){
 			if(uni.getStorageSync("isF5Index")==true){

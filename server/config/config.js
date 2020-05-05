@@ -1,4 +1,4 @@
 module.exports={
-	"server":"192.168.1.12",//服务器地址
+	"server":"http://api.q05.cc/server/",//服务器地址
 	
 }

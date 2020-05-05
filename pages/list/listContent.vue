@@ -226,6 +226,7 @@
 			},
 			//长按选择功能
 			showOther(e){
+				if(!this.isLogin)return 0;
 				var index=e.currentTarget.dataset.index;
 				var id=this.alibumList[index].Id,
 					title=this.alibumList[index].title,

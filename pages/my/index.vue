@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="header">
 			<view class="headerImg">
-				<img :src="'http://q2.qlogo.cn/headimg_dl?dst_uin='+info.qq+'&spec=4'" alt="">
+				<img :src="info.img" alt="">
 			</view>
 			<p>{{info.name}}</p>
 			<p v-if="isLogin" style="color: #DD524D;">欢迎你管理员</p>
@@ -21,11 +21,11 @@
 					<p>我的微信</p>
 				</view>
 			</view>
-<!-- 			<view class="functionLi" @click="callPhone">
+			<view class="functionLi" @click="callPhone" v-if="info.phone">
 				<view class="Limit">
-					<p></p>
+					<p>我的电话</p>
 				</view>
-			</view> -->
+			</view>
 			<button class="findMe" open-type="contact">
 				<view class="Limit">
 					<p>联系我们</p>
@@ -52,17 +52,14 @@
 </template>
 
 <script>
+	let Ajax = require("../util/Ajax.js")
 	export default {
 		data() {
 			return {
 				title: 'Hello',
 				info:{
-					qq:"330729121",
-					name:"Hello",
-					info:"拿着最少的工资，做着最多的事情。",
-					wx:"ai330729121",
-					phone:"17602364646",
-					www:"http://www.q05.cc/"
+				
+
 				},
 				isChangeImg:false,
 				isLogin:false
@@ -70,6 +67,14 @@
 		},
 		onLoad() {
 			this.isChangeImg=uni.getStorageSync("isChangeImg");
+			var that = this;
+			Ajax.get({url:'album/getSet',data:{
+			}})
+			  .then((res)=>{//请求成功的回调函数
+				that.info=res.data;
+			  }).catch((res)=>{//捕获请求失败时的回调函数
+			    console.log(res)
+			  })
 		},
 		onShow() {
 			if(uni.getStorageSync("session")!="" && uni.getStorageSync("session")!=undefined && uni.getStorageSync("session").length>10){

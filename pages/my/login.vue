@@ -23,7 +23,6 @@
 </template>
 
 <script>
-	let Ajax = require("../util/Ajax.js")
 	export default {
 		data() {
 			return {
