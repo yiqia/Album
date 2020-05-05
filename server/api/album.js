@@ -146,7 +146,6 @@ router.post("/addAlbum", (req, res) => {
 		var postObjc = querystring.parse(postData);
 		const data = {
 			className: postObjc.className,
-			classInfo: postObjc.classInfo,
 			classId: postObjc.classId,
 			session: postObjc.session
 		}
@@ -156,7 +155,7 @@ router.post("/addAlbum", (req, res) => {
 		yiqi.isLogin(data.session, sql, function(e) {
 			if (e != "" && e != undefined && e.length > 0) {
 				const sqlStr = "insert into album_type (title,info,class_id,sort)select ?,?,?,max(Id) from album_type";
-				sql.query(sqlStr, [data.className, data.classInfo, data.classId], function(error, results, fields) {
+				sql.query(sqlStr, [data.className, postObjc.classInfo, data.classId], function(error, results, fields) {
 					if (error) throw error;
 					var code = yiqi.Code(1024);
 					code.Id = results.insertId;

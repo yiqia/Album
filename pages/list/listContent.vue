@@ -10,24 +10,26 @@
 						<img src="/static/icon/add.png" alt="">
 					</view>
 				</view>
-				<view class="labelContent" :style="isLabelOpen?'height:55vw;':'height: 0vw;'">
+				<view class="labelContent" :style="isLabelOpen?'height:600upx;':'height: 0vw;'">
 					<view class="Limit">
 						<view class="labelContentList">
 							<view class="albumInfo">
 								<textarea v-model="albumInfo" placeholder="输入你的相册描述" />
 							</view>
 						</view>
+						<input type="text" style="height: 100upx;" v-model="className" placeholder="输入相册名" />
 						<view class="labelContentList">
-							<view class="labelContentLi" style="width: 70%;">
-								<input type="text" v-model="className" placeholder="输入相册名">
+							<view class="labelContentLi" style="width: 60%;">
+								
 							</view>
-							<view class="labelContentLi" style="width: 30%;display: flex;justify-content: flex-end;align-items: center;">
+							<view class="labelContentLi" style="width: 40%;display: flex;justify-content: flex-end;align-items: center;">
 								<button type="primary" style="font-size: 3vw;width: 13vw;height: 8vw;margin-right: 0px;" @click="addClass">添加</button>
 							</view>
 						</view>
+						<input type="text" v-model="changeName" placeholder="长按选择相册">
 						<view class="labelContentList">
 							<view class="labelContentLi" style="width: 40%;">
-								<input type="text" v-model="changeName" placeholder="长按选择相册">
+								<!-- <input type="text" v-model="changeName" placeholder="长按选择相册"> -->
 							</view>
 							<view class="labelContentLi" style="width: 60%;display: flex;justify-content: flex-end;align-items: center;">
 								<button type="primary" style="font-size: 3vw;width: 13vw;height: 8vw;margin-right: 0px;" @click="changeLeftRight" :data-id="1" :disabled="!changeIndex && changeName.length<1">前移</button>
