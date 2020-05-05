@@ -36,6 +36,12 @@
 					<p>管理员登录</p>
 				</view>
 			</view>
+			<view class="functionLi"  v-if="isLogin">
+				<view class="Limit">
+					<p>开启图片本地存储（不建议）</p>
+					 <switch style="position: absolute;right: 0;top:0;" :checked="isChangeImg" @change="startImgLoc" />
+				</view>
+			</view>
 			<view class="functionLi" @click="endLogin" v-if="isLogin">
 				<view class="Limit">
 					<p>退出登录</p>
@@ -58,11 +64,12 @@
 					phone:"17602364646",
 					www:"http://www.q05.cc/"
 				},
+				isChangeImg:false,
 				isLogin:false
 			}
 		},
 		onLoad() {
-
+			this.isChangeImg=uni.getStorageSync("isChangeImg");
 		},
 		onShow() {
 			if(uni.getStorageSync("session")!="" && uni.getStorageSync("session")!=undefined && uni.getStorageSync("session").length>10){
@@ -72,6 +79,11 @@
 			}
 		},
 		methods: {
+			//开启本地存储
+			startImgLoc(e){
+				this.isChangeImg=e.detail.value;
+				uni.setStorageSync("isChangeImg",e.detail.value);
+			},
 			//退出登录
 			endLogin(){
 				uni.clearStorage();
@@ -155,7 +167,7 @@
 		color: #444;
 		background-color: #fff;
 		font-size: 1.1rem;
-		
+		position: relative;
 	}
 	.functionLi .Limit{
 		width: 90%;

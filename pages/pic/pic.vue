@@ -50,6 +50,7 @@
 		methods: {
 			//长按选择功能
 			showOther(e) {
+				if(!this.isLogin)return 0;
 				var index = e.currentTarget.dataset.index;
 				var img = this.info.imgList[index],
 					id = this.classId;
@@ -137,6 +138,9 @@
 			},
 			updataPic() {
 				var that = this;
+				var isChangeImg=uni.getStorageSync("isChangeImg");
+				if(isChangeImg==undefined || isChangeImg=="")isChangeImg=false;
+				
 				uni.chooseImage({
 					count: 20, //默认9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -151,7 +155,7 @@
 
 						for (var i = 0; i < tempFilePaths.length; i++) {
 							uni.uploadFile({
-								url: getApp().globalData.url + "album/updataPic", //仅为示例，非真实的接口地址
+								url: getApp().globalData.url + "album/"+(isChangeImg?'updataPic':'updataPicQiniu'), //仅为示例，非真实的接口地址
 								filePath: tempFilePaths[i],
 								name: 'file',
 								formData: {

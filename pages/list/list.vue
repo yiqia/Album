@@ -199,6 +199,7 @@
 			},
 			//长按选择功能
 			showOther(e){
+				if(!this.isLogin)return 0;
 				var index=e.currentTarget.dataset.index;
 				var id=this.albumClass[index].Id,
 					title=this.albumClass[index].title;

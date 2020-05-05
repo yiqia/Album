@@ -2,13 +2,13 @@
 	<view class="content">
 		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 			<swiper-item>
-				<img src="https://ae01.alicdn.com/kf/H963a63a924a0425d97ded848e914916bG.jpg" alt="">
+				<img src="xc.cuchachayou.com/static/1_466443.jpg" alt="">
 			</swiper-item>
 		</swiper>
 		<view class="Limit">
 			<view class="albumList">
 				<view class="albumListLi" v-for="(item,index) in alibumList" :key="index" @click="showPic" :data-id="item.Id">
-					<img :src="item.img" alt="" mode="aspectFit">
+					<img :src="item.img" alt="" mode="aspectFill">
 					<view class="Limit">
 						<view class="alibumTitle">
 							<p>{{item.title}}</p>
@@ -52,6 +52,7 @@
 			this.alibumList=[];
 			this.page=1;
 			this.getAlbum(this.page);
+			
 		},
 		methods: {
 			showPic(e){
@@ -70,6 +71,7 @@
 				  .then((res)=>{//请求成功的回调函数
 					that.alibumList=that.alibumList.concat(res.data);
 					if(res.data!=""){that.page+=1};
+					uni.stopPullDownRefresh();
 					uni.hideLoading();
 				  }).catch((res)=>{//捕获请求失败时的回调函数
 				    console.log(res)

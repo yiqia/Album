@@ -74,5 +74,9 @@
     },
     "mp-qq" : {
         "appid" : "1110033831"
+    },
+    "h5" : {
+        "title" : "vantAlbum",
+        "domain" : "http://xc.cuchachayou.com/"
     }
 }

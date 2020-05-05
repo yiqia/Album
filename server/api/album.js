@@ -8,9 +8,11 @@ module.exports = router;
 var querystring = require('querystring');
 var path = require("path");
 var fs = require("fs");
+
 var formidable = require('formidable');
 const yiqi = require("../config/yiqi");
 const sql = require("../config/conn");
+const config = require('../config/config');
 const upload = require("../config/qiniu");
 //查询数据（all方法支持POST、GET、PUT、PATCH、DELETE传参方式）
 
@@ -288,7 +290,7 @@ router.get("/cutClass", (req, res) => {
 	yiqi.isLogin(data.session, sql, function(e) {
 		if (e != "" && e != undefined && e.length > 0) {
 			const sqlStr =
-				"delete from album_class where Id = ?";
+				"DELETE album_class,album_type from album_class LEFT JOIN album_type ON album_class.Id=album_type.class_id WHERE album_class.Id=?";
 			sql.query(sqlStr, [data.id], function(error, results,
 				fields) {
 				if (error) throw error;
@@ -373,8 +375,59 @@ router.get("/setIndexPic", (req, res) => {
 		}
 	});
 });
-//上传图片
+//上传图片 本地存储
 router.post("/updataPic", (req, res) => {
+	var form = new formidable.IncomingForm();
+	var uploadDir = path.normalize(__dirname + '/' + "../image");
+	form.uploadDir = uploadDir;
+	console.log(uploadDir);
+	form.parse(req, function(err, fields, files) {
+		var oldname = files.file.path;
+		var newname = './image/'+files.file.name;
+		var session=fields.session,
+			id=fields.id;
+		fs.rename(oldname, newname, function(err) {
+			if (err) console.log(err);
+			var imgUrl=newname.replace("./",config.server)
+			//upload(files.file.name, newname,function(e){
+				if(imgUrl!="" || imgUrl!=undefined){
+					var img=imgUrl;
+					var code= yiqi.Code(1024);
+					code.img=img;
+					const data = {
+						session: session,
+						id: id
+					}
+					if (yiqi.check(data)) {
+						res.end(JSON.stringify(yiqi.Code(1001)));
+					}
+					yiqi.isLogin(session, sql, function(e) {
+						if (e != "" && e != undefined && e.length > 0) {
+							const sqlStr =
+								"insert into album_pic (img,type_id) values(?,?)";
+							sql.query(sqlStr, [img,id], function(error, results,
+								fields) {
+								if (error) throw error;
+								code.Id=results.insertId;
+								res.end(JSON.stringify(code));
+							});
+						} else {
+							res.end(JSON.stringify(yiqi.Code(1003)));
+						}
+					});
+					
+					
+					
+				}else{
+					res.end(JSON.stringify(yiqi.Code(1004)));
+				}
+			//});
+			
+		})
+	});
+});
+//上传图片-七牛云(更安全速度更快)
+router.post("/updataPicQiniu", (req, res) => {
 	var form = new formidable.IncomingForm();
 	var uploadDir = path.normalize(__dirname + '/' + "../image");
 	form.uploadDir = uploadDir;
